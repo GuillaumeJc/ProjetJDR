@@ -3,4 +3,4 @@ Projet de fin de formation AJC pour SopraSteria
 
 
 
-![Logo](Heroes_Foundry_Logo.png)
+![Logo](Heroes_Foundy_Logo.jpeg)
