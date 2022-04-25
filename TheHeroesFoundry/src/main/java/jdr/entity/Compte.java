@@ -1,21 +1,32 @@
 package jdr.entity;
 
-public class Compte {
-	protected Integer id;
+import java.util.Objects;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public abstract class Compte {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
+	protected Long id;
 	protected String login;
 	protected String password;
  
-	
-	public Compte (String login, String password){
-		this.login = login;
-		this.password = password;
-	}
-	
-	
-	public Compte(Integer id) {
-		this.id = id;
+	public Compte() {
+		
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getLogin() {
 		return login;
@@ -24,7 +35,7 @@ public class Compte {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -33,14 +44,23 @@ public class Compte {
 		this.password = password;
 	}
 
-
-	public Integer getId() {
-		return id;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
-
-	public void setId(Integer id) {
-		this.id = id;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
 	}
+	
+	
 	
 }

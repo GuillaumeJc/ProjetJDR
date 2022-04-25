@@ -1,5 +1,8 @@
 package jdr.entity;
 
-public class Stats {
+import javax.persistence.Embeddable;
 
+@Embeddable
+public class Stats {
+ 
 }
