@@ -1,7 +1,7 @@
 # Mise en place du projet JDR
-##Projet de fin de formation AJC pour SopraSteria
+## Projet de fin de formation AJC pour SopraSteria
 
-###Resumé
+### Resumé
 
 Dans le cadre de notre Préparation Opérationnelle à l'Emploi Individuelle encadrée par AJC, un projet de fin de formation nous a été demandé pour valider nos acquis.
 Dans notre groupe composé de Adil L., Ammiot M., Ferreira M. et Jacquet G., notre projet se base sur la gestion d'un Jeu de Rôle nommé **The Heroes Foundry**.
