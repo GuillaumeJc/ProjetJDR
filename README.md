@@ -7,3 +7,5 @@ Projet de fin de formation AJC pour SopraSteria
 
 
 /!\ Toutes les id sont des Long
+
+CTRL + Maj + C => Commenter la selection \o/
