@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 @Embeddable
-public class Caracteristique {
+public class Caracteristiques {
 
 	@Id
 	private Long id;
@@ -19,7 +19,7 @@ public class Caracteristique {
 	private int intelligence;
 	private int constitution;
 	
-	public Caracteristique() {
+	public Caracteristiques() {
 		
 	}
 
@@ -84,7 +84,7 @@ public class Caracteristique {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Caracteristique other = (Caracteristique) obj;
+		Caracteristiques other = (Caracteristiques) obj;
 		return Objects.equals(id, other.id);
 	}
 	
