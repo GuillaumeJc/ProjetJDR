@@ -17,7 +17,6 @@ public class PersonnageService {
 	private AdminRepository adminRepository;
 
 	  public List<Personnage> getAll() { return personnageRepository.findAll();
-	 //blablabla
 
 	public Personnage getById(Long id) {
 		return personnageRepository.findById(id).orElseThrow(PersonnageException::new);

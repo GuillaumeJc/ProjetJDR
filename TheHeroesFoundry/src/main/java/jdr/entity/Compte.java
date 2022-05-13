@@ -15,6 +15,8 @@ public abstract class Compte {
 	protected Long id;
 	protected String login;
 	protected String password;
+	protected String nom; 
+	protected String prenom;
  
 	public Compte() {
 		
@@ -42,6 +44,22 @@ public abstract class Compte {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	@Override
