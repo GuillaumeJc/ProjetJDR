@@ -10,9 +10,12 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 
@@ -51,6 +54,8 @@ public abstract class Personnage {
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id_stuff")),
 			@AttributeOverride(name = "quantite", column = @Column(name = "quantite_stuff")) })
+	@OneToOne
+	@JoinColumn(name = "stuff_id", foreignKey = @ForeignKey(name="personnage_stuff_id_fk"))
 	private Stuff stuff;
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id_metier")),
@@ -60,6 +65,8 @@ public abstract class Personnage {
 			@AttributeOverride(name = "lead_tech", column = @Column(name = "lead_tech_metier")),
 			@AttributeOverride(name = "business_analyst", column = @Column(name = "business_analyst_metier")),
 			@AttributeOverride(name = "product_owner", column = @Column(name = "product_owner_metier")) })
+	@OneToOne
+	@JoinColumn(name = "metier_id", foreignKey = @ForeignKey(name="personnage_metier_id_fk"))
 	private Metier metier;
 	
 	public Personnage() {

@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 @Entity
@@ -18,6 +20,8 @@ public class Caracteristiques {
 	private int sagesse;
 	private int intelligence;
 	private int constitution;
+	@Enumerated(EnumType.STRING)
+	private Competences competences;
 	
 	public Caracteristiques() {
 		
@@ -69,6 +73,14 @@ public class Caracteristiques {
 
 	public void setConstitution(int constitution) {
 		this.constitution = constitution;
+	}
+
+	public Competences getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(Competences competences) {
+		this.competences = competences;
 	}
 
 	@Override
