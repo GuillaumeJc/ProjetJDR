@@ -4,11 +4,13 @@ import java.util.Objects;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 @Entity
 @Embeddable
-public class Caracteristique {
+public class Caracteristiques {
 
 	@Id
 	private Long id;
@@ -18,8 +20,10 @@ public class Caracteristique {
 	private int sagesse;
 	private int intelligence;
 	private int constitution;
+	@Enumerated(EnumType.STRING)
+	private Competences competences;
 	
-	public Caracteristique() {
+	public Caracteristiques() {
 		
 	}
 
@@ -71,6 +75,14 @@ public class Caracteristique {
 		this.constitution = constitution;
 	}
 
+	public Competences getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(Competences competences) {
+		this.competences = competences;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -84,7 +96,7 @@ public class Caracteristique {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Caracteristique other = (Caracteristique) obj;
+		Caracteristiques other = (Caracteristiques) obj;
 		return Objects.equals(id, other.id);
 	}
 	
