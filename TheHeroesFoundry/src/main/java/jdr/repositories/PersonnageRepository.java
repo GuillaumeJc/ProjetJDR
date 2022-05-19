@@ -8,8 +8,14 @@ import org.springframework.data.repository.query.Param;
 
 import jdr.entity.Personnage;
 
-public interface PersonnageRepository extends JpaRepository<Personnage,Long> {
+public interface PersonnageRepository extends JpaRepository<Personnage, Long> {
 
 	@Query("select p from Personnage p left join fetch p.stuff where p.id=:id")
 	Optional<Personnage> findByIdWithStuff(@Param("id") Long id);
+
+	@Query("select p from Personnage p where p.prenom=:prenom")
+	Optional<Personnage> findByPrenom(@Param("prenom") String prenom);
+
+	@Query("select p from Personnage p where p.nom=:nom")
+	Optional<Personnage> findByNom(@Param("nom") String nom);
 }
