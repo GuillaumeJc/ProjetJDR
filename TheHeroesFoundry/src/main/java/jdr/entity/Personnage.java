@@ -10,9 +10,12 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 
@@ -24,8 +27,8 @@ public abstract class Personnage {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seqPersonnage")
 	private Long id;
 	private double gold;
-	private String nom;
-	private String prenom;
+	private String nom; //Nom du PERSONNAGE et pas du joueur
+	private String prenom; //Prenom du PERSONNAGE et pas du joueur
 	private int age;
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
@@ -33,12 +36,15 @@ public abstract class Personnage {
 	private Alignement alignement; 
 	@Enumerated(EnumType.STRING)
 	private Race race;
-	//@Embedded
-	//@AttributeOverrides({ @AttributeOverride(name = "?", column = @Column(name = "?)),
-		//@AttributeOverride(name = "rue", column = @Column(name = "person_street")),
-		//@AttributeOverride(name = "codePostal", column = @Column(name = "person_zip_code")),
-		//@AttributeOverride(name = "ville", column = @Column(name = "person_city")) })
-	private Caracteristique caracteristique;
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id_carac")),
+		@AttributeOverride(name = "force", column = @Column(name = "force_carac")),
+		@AttributeOverride(name = "dexterite", column = @Column(name = "dexterite_carac")),
+		@AttributeOverride(name = "charisme", column = @Column(name = "charisme_carac")),
+		@AttributeOverride(name = "sagesse", column = @Column(name = "sagesse_carac")),
+		@AttributeOverride(name = "intelligence", column = @Column(name = "intelligence_carac")),
+		@AttributeOverride(name = "constitution", column = @Column(name = "constitution_carac")) })
+	private Caracteristiques caracteristiques;
 	@Embedded
 	//@AttributeOverrides({ @AttributeOverride(name = "?", column = @Column(name = "?)),
 			//@AttributeOverride(name = "rue", column = @Column(name = "person_street")),
@@ -46,21 +52,34 @@ public abstract class Personnage {
 			//@AttributeOverride(name = "ville", column = @Column(name = "person_city")) })
 	private Stats stats;
 	@Embedded
-	//@AttributeOverrides({ @AttributeOverride(name = "?", column = @Column(name = "?)),
-			//@AttributeOverride(name = "rue", column = @Column(name = "person_street")),
-			//@AttributeOverride(name = "codePostal", column = @Column(name = "person_zip_code")),
-			//@AttributeOverride(name = "ville", column = @Column(name = "person_city")) })
+	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id_stuff")),
+			@AttributeOverride(name = "quantite", column = @Column(name = "quantite_stuff")) })
+	@OneToOne
+	@JoinColumn(name = "stuff_id", foreignKey = @ForeignKey(name="personnage_stuff_id_fk"))
 	private Stuff stuff;
-	//@Embedded
-	//@AttributeOverrides({ @AttributeOverride(name = "?", column = @Column(name = "?)),
-			//@AttributeOverride(name = "rue", column = @Column(name = "person_street")),
-			//@AttributeOverride(name = "codePostal", column = @Column(name = "person_zip_code")),
-			//@AttributeOverride(name = "ville", column = @Column(name = "person_city")) })
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id_metier")),
+			@AttributeOverride(name = "developpeur", column = @Column(name = "developpeur_metier")),
+			@AttributeOverride(name = "rh", column = @Column(name = "rh_metier")),
+			@AttributeOverride(name = "chef_projet", column = @Column(name = "chef_projet_metier")),
+			@AttributeOverride(name = "lead_tech", column = @Column(name = "lead_tech_metier")),
+			@AttributeOverride(name = "business_analyst", column = @Column(name = "business_analyst_metier")),
+			@AttributeOverride(name = "product_owner", column = @Column(name = "product_owner_metier")) })
+	@OneToOne
+	@JoinColumn(name = "metier_id", foreignKey = @ForeignKey(name="personnage_metier_id_fk"))
 	private Metier metier;
 	
 	public Personnage() {
 		
 	}
+
+	
+	public Personnage(String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -126,12 +145,12 @@ public abstract class Personnage {
 		this.race = race;
 	}
 
-	public Caracteristique getCaracteristique() {
-		return caracteristique;
+	public Caracteristiques getCaracteristique() {
+		return caracteristiques;
 	}
 
-	public void setCaracteristique(Caracteristique caracteristique) {
-		this.caracteristique = caracteristique;
+	public void setCaracteristique(Caracteristiques caracteristiques) {
+		this.caracteristiques = caracteristiques;
 	}
 
 	public Stats getStats() {
