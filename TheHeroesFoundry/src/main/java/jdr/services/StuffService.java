@@ -33,8 +33,6 @@ public class StuffService {
 	}
 
 	public void deleteById(Long id) {
-		Stuff stuff = new Stuff();
-		stuff.setId(id);
-		delete(stuff);
+		stuffRepository.deleteById(id);
 	}
 }
