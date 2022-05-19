@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import jdr.entity.Personnage;
 import jdr.exceptions.PersonnageException;
 import jdr.repositories.PersonnageRepository;
+import quest.entity.Formateur;
 
 
 @Service
@@ -25,6 +26,13 @@ public class PersonnageService {
 		return personnageRepository.findById(id).orElseThrow(PersonnageException::new);
 	}
 
+	public Personnage getByIdWithStuff(Long id) {
+		return personnageRepository.findByIdWithStuff(id).orElseThrow(RuntimeException::new);
+		
+	}
+	
+	
+	
 	public void create(Personnage personnage) {
 		if (personnage.getNom() == null || personnage.getNom().isEmpty()) {
 			throw new PersonnageException();
