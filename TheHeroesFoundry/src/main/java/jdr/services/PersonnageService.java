@@ -53,9 +53,7 @@ public class PersonnageService {
 
 	
 	public void deleteById(Long id) {
-		Personnage personnage = new Personnage(); // A VOIR AVEC OLIVIER
-		personnage.setId(id);
-		delete(personnage);
+		personnageRepository.deleteById(id);  //A voir --> suppression des attributs du personnage
 	}
 
 }

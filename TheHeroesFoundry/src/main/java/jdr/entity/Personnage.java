@@ -21,7 +21,7 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name="seqPersonnage", sequenceName = "seq_personnage", initialValue = 1, allocationSize = 1)
-public abstract class Personnage {
+public class Personnage {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seqPersonnage")
