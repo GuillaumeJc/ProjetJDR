@@ -11,8 +11,7 @@ import jdr.exceptions.BoutiqueException;
 import jdr.repositories.BoutiqueRepository;
 
 public class BoutiqueService {
-	
-	
+
 	@Autowired
 	private BoutiqueRepository boutiqueRepository;
 
@@ -20,28 +19,11 @@ public class BoutiqueService {
 		return boutiqueRepository.findAll();
 	}
 
-	public Boutique getById(Long id) { //Ici on prend l'un des items present dans la boutique via son id
-		return boutiqueRepository.findById(id).orElseThrow(BoutiqueException::new);
-	}
-	
-	public Boutique getEquipementByLibelle(String libelle) { //Ici on prend l'un des items present dans la boutique via son id
-		return boutiqueRepository.findEquipementByLibelle(libelle).orElseThrow(BoutiqueException::new);
-	}
 
-	public Boutique getConsommablesByLibelle(String libelle) { //Ici on prend l'un des items present dans la boutique via son id
-		return boutiqueRepository.findConsommablesByLibelle(libelle).orElseThrow(BoutiqueException::new);
-	}
-	
-	public Boutique create(Boutique boutique) { // on crée un objet 
+	public Boutique create(Boutique boutique) { // on crée un objet
 		return boutiqueRepository.save(boutique);
 	}
-	
-	public Boutique createEquipement(Equipement equipement) { // on crée un objet 
-		return boutiqueRepository.save(equipement);
-	}
-	public Boutique createConsommable(Consommables consommables) { // on crée un objet 
-		return boutiqueRepository.save(consommables);
-	}
+
 	public Boutique update(Boutique boutique) {
 		return boutiqueRepository.save(boutique);
 	}
@@ -50,15 +32,65 @@ public class BoutiqueService {
 		boutiqueRepository.delete(boutique);
 	}
 
-	public void deleteByIdConsommables(Long id) {
-		Boutique boutique = new Consommables();
-		boutique.setId(id);
-		delete(boutique);
+	
+	//CONSOMMABLES 
+
+	public Consommables getAllConsommables() {
+		return (Consommables) boutiqueRepository.findAll();
+	}
+
+	public Consommables getByIdConsommables(Long id) { // Ici on prend l'un des items present dans la boutique via son id
+		return (Consommables) boutiqueRepository.findById(id).orElseThrow(BoutiqueException::new);
+	}
+
+	public Consommables getConsommablesByLibelle(String libelle) { // Ici on prend l'un des items present dans la boutique
+		// via son id
+		return (Consommables) boutiqueRepository.findConsommablesByLibelle(libelle).orElseThrow(BoutiqueException::new);
+	}
+
+	public Consommables createConsommables(Consommables consommables) { // on crée un objet
+		return (Consommables) boutiqueRepository.save(consommables);
+	}
+
+	public Consommables updateConsommables (Consommables consommables) {
+		return (Consommables)boutiqueRepository.save(consommables);
 	}
 	
+	public void deleteByIdConsommables(Long id) {
+		Consommables consommables = new Consommables();
+		consommables.setId(id);
+		delete(consommables);
+	}
+	
+	
+	
+	//EQUIPEMENT
+
+
+	public Equipement getAllEquipement() {
+		return (Equipement) boutiqueRepository.findAll();
+	}
+
+	public Equipement getByIdEquipement(Long id) { // Ici on prend l'un des items present dans la boutique via son id
+		return (Equipement) boutiqueRepository.findById(id).orElseThrow(BoutiqueException::new);
+	}
+	
+	public Equipement getEquipementByLibelle(String libelle) { // Ici on prend l'un des items present dans la boutique
+		// via son id
+		return (Equipement) boutiqueRepository.findEquipementByLibelle(libelle).orElseThrow(BoutiqueException::new);
+	}
+
+	public Equipement createEquipement(Equipement equipement) { // on crée un objet
+		return (Equipement) boutiqueRepository.save(equipement);
+	}
+	
+	public Equipement updateEquipement (Equipement equipement) {
+		return (Equipement)boutiqueRepository.save(equipement);
+	}
+
 	public void deleteByIdEquipement(Long id) {
-		Boutique boutique = new Equipement();
-		boutique.setId(id);
-		delete(boutique);
+		Equipement equipement = new Equipement();
+		equipement.setId(id);
+		delete(equipement);
 	}
 }

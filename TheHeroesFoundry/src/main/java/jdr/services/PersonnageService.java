@@ -51,10 +51,11 @@ public class PersonnageService {
 		personnageRepository.delete(personnage);
 	}
 
-//	public void deleteById(Long id) {
-//		Personnage personnage = new Personnage(); A VOIR AVEC OLIVIER
-//		personnage.setId(id);
-//		delete(personnage);
-//	}
+	
+	public void deleteById(Long id) {
+		Personnage personnage = new Personnage(); // A VOIR AVEC OLIVIER
+		personnage.setId(id);
+		delete(personnage);
+	}
 
 }
