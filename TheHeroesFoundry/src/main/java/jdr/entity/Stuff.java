@@ -4,9 +4,12 @@ import java.util.Objects;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -17,8 +20,15 @@ public class Stuff {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seqStuff")
 	private Long id; 
-	private int quantite; 
-	
+	private int quantite;
+	@ManyToOne
+	@JoinColumn(name = "equipement_id", foreignKey = @ForeignKey(name = "stuff_equipement_id_fk"))
+	private Equipement equipement;
+	@ManyToOne
+	@JoinColumn(name = "consommables_id", foreignKey = @ForeignKey(name = "stuff_consommables_id_fk"))
+	private Consommables consommables;
+
+
 	public Stuff () {
 		
 	}
@@ -38,7 +48,23 @@ public class Stuff {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
+	
 
+	public Equipement getEquipement() {
+		return equipement;
+	}
+
+	public void setEquipement(Equipement equipement) {
+		this.equipement = equipement;
+	}
+
+	public Consommables getConsommables() {
+		return consommables;
+	}
+
+	public void setConsommables(Consommables consommables) {
+		this.consommables = consommables;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
