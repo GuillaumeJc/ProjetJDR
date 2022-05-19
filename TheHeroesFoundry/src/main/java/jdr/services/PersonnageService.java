@@ -5,29 +5,49 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jdr.entity.Admin;
+
 import jdr.entity.Personnage;
-import jdr.exceptions.AdminException;
-import jdr.repositories.AdminRepository;
+import jdr.exceptions.PersonnageException;
+import jdr.repositories.PersonnageRepository;
+
 
 @Service
 public class PersonnageService {
 
 	@Autowired
-	private AdminRepository adminRepository;
+	private PersonnageRepository personnageRepository;
 
-	  public List<Personnage> getAll() { return personnageRepository.findAll();
-	 //blablabla
+	  public List<Personnage> getAll() { 
+		  return personnageRepository.findAll();
+	  }
 
 	public Personnage getById(Long id) {
 		return personnageRepository.findById(id).orElseThrow(PersonnageException::new);
 	}
 
-	public void create(Admin admin) {
+	public void create(Personnage personnage) {
 		if (personnage.getNom() == null || personnage.getNom().isEmpty()) {
 			throw new PersonnageException();
 		}
-		personnageRepository.save(admin);
+		personnageRepository.save(personnage);
+	}
+	
+	public Personnage update(Personnage personnage) {
+		return personnageRepository.save(personnage);
 	}
 
+	public void delete(Personnage personnage) {
+		personnageRepository.delete(personnage);
+	}
+
+//	public void deleteById(Long id) {
+//		Personnage personnage = new Personnage();
+//		personnage.setId(id);
+//		delete(personnage);
+//	}
+	
+	//Il manque un constructeur pour créer un personnage dans la classe Personnage
 }
+
+
+
