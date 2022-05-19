@@ -35,8 +35,8 @@ public class BoutiqueService {
 	
 	//CONSOMMABLES 
 
-	public Consommables getAllConsommables() {
-		return (Consommables) boutiqueRepository.findAll();
+	public List<Consommables> getAllConsommables() {
+		return boutiqueRepository.findAllConsommables();
 	}
 
 	public Consommables getByIdConsommables(Long id) { // Ici on prend l'un des items present dans la boutique via son id
@@ -67,8 +67,8 @@ public class BoutiqueService {
 	//EQUIPEMENT
 
 
-	public Equipement getAllEquipement() {
-		return (Equipement) boutiqueRepository.findAll();
+	public List<Equipement> getAllEquipement() {
+		return boutiqueRepository.findAllEquipement();
 	}
 
 	public Equipement getByIdEquipement(Long id) { // Ici on prend l'un des items present dans la boutique via son id
