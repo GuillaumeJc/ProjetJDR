@@ -22,6 +22,17 @@ public abstract class Boutique {
 		
 	}
 
+	
+	
+	public Boutique(String nomStuff, int prix, boolean isAvailable) {
+		super();
+		this.nomStuff = nomStuff;
+		this.prix = prix;
+		this.isAvailable = isAvailable;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

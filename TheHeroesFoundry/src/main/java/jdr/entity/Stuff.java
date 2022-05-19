@@ -32,6 +32,17 @@ public class Stuff {
 	public Stuff () {
 		
 	}
+	
+	
+
+	public Stuff(int quantite, Equipement equipement, Consommables consommables) {
+		super();
+		this.quantite = quantite;
+		this.equipement = equipement;
+		this.consommables = consommables;
+	}
+
+
 
 	public Long getId() {
 		return id;

@@ -27,8 +27,8 @@ public abstract class Personnage {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seqPersonnage")
 	private Long id;
 	private double gold;
-	private String nom;
-	private String prenom;
+	private String nom; //Nom du PERSONNAGE et pas du joueur
+	private String prenom; //Prenom du PERSONNAGE et pas du joueur
 	private int age;
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
@@ -72,6 +72,14 @@ public abstract class Personnage {
 	public Personnage() {
 		
 	}
+
+	
+	public Personnage(String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 
 	public Long getId() {
 		return id;
