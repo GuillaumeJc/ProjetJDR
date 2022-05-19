@@ -7,6 +7,7 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqBoutique", sequenceName = "seq_consommables", initialValue = 1, allocationSize = 1)
 public class Consommables extends Boutique {
 
+	private String libelle; 
 	private String description; 
 	
 	public Consommables () {
@@ -19,6 +20,14 @@ public class Consommables extends Boutique {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 	
 	
