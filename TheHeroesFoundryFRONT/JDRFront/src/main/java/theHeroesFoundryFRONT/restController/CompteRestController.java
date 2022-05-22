@@ -35,3 +35,4 @@ public class CompteRestController {
 	}
 
 }
+//Il ne nous manque pas l'option se connecter ? Pour joueur comme pur admin ? 

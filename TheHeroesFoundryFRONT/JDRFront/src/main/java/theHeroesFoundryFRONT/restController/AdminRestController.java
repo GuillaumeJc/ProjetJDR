@@ -39,7 +39,6 @@ public class AdminRestController {
 	
 	@Autowired
 	private PersonnageService personnageService; 
-
 	
 	// JOUEURS 
 	
