@@ -1,1 +1,26 @@
+server:
+  servlet:
+    context-path: /boot
+spring:
+ datasource:
+   driver: org.postgresql.Driver
+   password: postgres
+   url: jdbc:postgresql://localhost:5432/the_heroes_foundry
+   username: postgres
+  
+ jpa:
+  hibernate:
+     ddl-auto: validate
+  properties:
+   hibernate:
+    dialect: org.hibernate.dialect.PostgreSQL10Dialect
+    format_sql: true
+    show_sql: true
 
+  mvc:
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+
+  main:
+    allow-circular-references: true
