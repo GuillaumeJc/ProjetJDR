@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import jdr.entity.Compte;
 import jdr.entity.Joueur;
+import jdr.entity.Personnage;
 import jdr.repositories.CompteRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class CompteService {
 		return compteRepository.findAll();
 	}
 
-	public List<Joueur> getAllFormateurs() {
+	public List<Joueur> getAllJoueurs() {
 		return compteRepository.findAllJoueurs();
 	}
 
@@ -58,9 +59,10 @@ public class CompteService {
 	}
 
 	public void deleteByIdJoueur(Long id) {
-		Compte compte = new Joueur();
+		Joueur compte = new Joueur();
 		compte.setId(id);
 		delete(compte);
 	}
 
+	
 }
