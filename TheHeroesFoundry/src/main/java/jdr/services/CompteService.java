@@ -59,9 +59,7 @@ public class CompteService {
 	}
 
 	public void deleteByIdJoueur(Long id) {
-		Joueur compte = new Joueur();
-		compte.setId(id);
-		delete(compte);
+		compteRepository.deleteById(id);
 	}
 
 	

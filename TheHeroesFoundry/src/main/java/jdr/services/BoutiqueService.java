@@ -57,9 +57,7 @@ public class BoutiqueService {
 	}
 	
 	public void deleteByIdConsommables(Long id) {
-		Consommables consommables = new Consommables();
-		consommables.setId(id);
-		delete(consommables);
+		boutiqueRepository.deleteById(id);
 	}
 	
 	
@@ -89,8 +87,7 @@ public class BoutiqueService {
 	}
 
 	public void deleteByIdEquipement(Long id) {
-		Equipement equipement = new Equipement();
-		equipement.setId(id);
-		delete(equipement);
+		boutiqueRepository.deleteById(id);
+		
 	}
 }

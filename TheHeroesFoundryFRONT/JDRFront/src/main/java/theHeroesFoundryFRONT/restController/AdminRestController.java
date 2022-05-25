@@ -39,7 +39,6 @@ public class AdminRestController {
 	
 	@Autowired
 	private PersonnageService personnageService; 
-
 	
 	// JOUEURS 
 	
@@ -129,7 +128,7 @@ public class AdminRestController {
 		return (Equipement) boutiqueService.createEquipement(equipement);
 	}
 	
-	@PutMapping("/boutique/gestion/equipement/update")
+	@PutMapping("/boutique/gestion/equipement")
 	@JsonView(JsonViews.EquipementFromBoutique.class) 
 	public Equipement updateEquipement(@RequestBody Equipement equipement) {         
 		return (Equipement) boutiqueService.updateEquipement(equipement); 
